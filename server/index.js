@@ -43,6 +43,29 @@ app.get("/task/:id", async (req, res) => {
   }
 });
 
+//update a task
+app.put("/task/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name} = req.body;
+    const task = await pool.query("update todo set name = $1 where todo_id = $2",[name,id]);
+    res.json("task updated successfully");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//delete a task
+app.delete("/task/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const task = await pool.query("delete from todo where todo_id = $1",[id]);
+    res.json("task deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.listen(5000, () => {
   console.log("port listing to localhost 5000");
 });
