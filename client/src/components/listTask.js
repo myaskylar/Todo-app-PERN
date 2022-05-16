@@ -6,7 +6,7 @@ const ListTask = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/task")
+      .get("/task")
       .then((res) => {
         if (res.status !== 200) {
           throw new Error(res.statusText);
