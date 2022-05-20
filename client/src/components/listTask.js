@@ -1,35 +1,30 @@
 import { React, useState, useEffect } from "react";
-import axios from "axios";
+
 
 const ListTask = () => {
   const [allTask, setAllTask] = useState([]);
 
+  async function getTask() {
+    const res = await fetch("/task");
+
+    const taskArray = await res.json();
+
+    setAllTask(taskArray)
+  }
+
   useEffect(() => {
-    axios
-      .get( "/index/task")
-      .then((res) => {
-        if (res.status !== 200) {
-          throw new Error(res.statusText);
-        }
-        return res.data;
-      })
-      .then((data) => {
-        console.log("this is fetch---->" + data);
-        setAllTask(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    getTask();
   }, []);
 
+console.log("this is allTask------------->" + allTask);
   return (
     <div>
       <h1> Task List </h1>
-      {/* <ul>
+      <ul>
         {allTask.map((task, index)=> {
          return <li key={index}>{task.name}</li>;
         })}
-      </ul> */}
+      </ul>
     </div>
   );
 };

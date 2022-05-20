@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 //middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build")));
 
 if(process.env.NODE_ENV === "production"){
   //server static content
@@ -36,10 +36,10 @@ app.post("/task", async (req, res) => {
 //getting all task
 app.get("/task", async (req, res) => {
   try {
-    const allTask = await pool.query("select name from todo");
+    const allTask = await pool.query("select * from todo");
     res.json(allTask.rows);
   } catch (err) {
-    console.log(err);
+    console.log(err.massage);
   }
 });
 
