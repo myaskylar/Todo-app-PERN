@@ -1,11 +1,17 @@
-// import { BrowserRouter as Router } from "react-router-dom";
-import ListTask from "./components/listTask";
+import React, { Fragment } from "react";
+import InputTodo from "./components/InputTodo";
+import ListTodos from "./components/ListTodos";
+import "./App.css";
 
-const App = () => (
-  <div>
-    <h1>hello word</h1>
-    <ListTask />
-  </div>
-);
+function App() {
+  return (
+    <Fragment>
+      <div className="container">
+        <InputTodo />
+        <ListTodos />
+      </div>
+    </Fragment>
+  );
+}
 
 export default App;

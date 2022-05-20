@@ -2,13 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "api.js",
+  "main": "index.js",
   "engines": {
     "node": "14.16.1",
     "npm" : "6.14.2"
   },
   "scripts": {
-    "start": "nodemon api.js",
+    "start": "nodemon index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "mya",
