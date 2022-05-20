@@ -31,7 +31,6 @@ console.log(path.join(__dirname, "client/build"));
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
-
     res.json(allTodos.rows);
   } catch (err) {
     console.error(err.message);
@@ -56,11 +55,10 @@ app.get("/todos/:id", async (req, res) => {
 
 app.post("/todos", async (req, res) => {
   try {
-    console.log(req.body);
-    const { description } = req.body;
+    const { name } = req.body;
     const newTodo = await pool.query(
-      "INSERT INTO todo (description) VALUES ($1) RETURNING *",
-      [description]
+      "INSERT INTO todo (name) VALUES ($1) RETURNING *",
+      [name]
     );
 
     res.json(newTodo.rows[0]);
@@ -74,10 +72,10 @@ app.post("/todos", async (req, res) => {
 app.put("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { description } = req.body;
+    const { name } = req.body;
     const updateTodo = await pool.query(
-      "UPDATE todo SET description = $1 WHERE todo_id = $2",
-      [description, id]
+      "UPDATE todo SET name = $1 WHERE todo_id = $2",
+      [name, id]
     );
 
     res.json("Todo was updated");

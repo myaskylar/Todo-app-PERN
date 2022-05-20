@@ -1,18 +1,25 @@
 import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
-  async function getTodos() {
-
-    const res = await fetch("/todos");
-    const todoArray = await res.json();
-
-    setTodos(todoArray);
-  }
 
   useEffect(() => {
-    getTodos();
+    axios
+      .get("/todos")
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.statusText);
+        }
+        return res.data;
+      })
+      .then((data) => {
+        setTodos(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (
