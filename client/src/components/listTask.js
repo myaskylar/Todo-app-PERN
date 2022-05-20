@@ -15,7 +15,7 @@ const ListTask = () => {
       })
       .then((data) => {
         console.log(data);
-        setAllTask(data);
+        // setAllTask(data);
       })
       .catch((err) => {
         console.error(err);
@@ -25,11 +25,11 @@ const ListTask = () => {
   return (
     <div>
       <h1> Task List </h1>
-      <ul>
+      {/* <ul>
         {allTask.map((task, index)=> {
          return <li key={index}>{task.name}</li>;
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
