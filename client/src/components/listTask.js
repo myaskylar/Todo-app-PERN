@@ -6,7 +6,7 @@ const ListTask = () => {
 
   useEffect(() => {
     axios
-      .get("https://pern-deploy-mya.herokuapp.com/index/task")
+      .get( "/task")
       .then((res) => {
         if (res.status !== 200) {
           throw new Error(res.statusText);
@@ -14,8 +14,8 @@ const ListTask = () => {
         return res.data;
       })
       .then((data) => {
-        console.log(data);
-        // setAllTask(data);
+        console.log("this is fetch---->" + data[0].name);
+        setAllTask(data);
       })
       .catch((err) => {
         console.error(err);
@@ -25,11 +25,11 @@ const ListTask = () => {
   return (
     <div>
       <h1> Task List </h1>
-      {/* <ul>
+      <ul>
         {allTask.map((task, index)=> {
          return <li key={index}>{task.name}</li>;
         })}
-      </ul> */}
+      </ul>
     </div>
   );
 };
