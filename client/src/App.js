@@ -1,15 +1,16 @@
-import React, { Fragment } from "react";
+import { Route, Routes } from "react-router-dom";
+import React from "react";
 import ListTodos from "./components/ListTodos";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <Fragment>
-      <div className="container">
-        <ListTodos />
-      </div>
-    </Fragment>
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<ListTodos />} />
+      </Routes>
+    </div>
   );
-}
+};
 
 export default App;
