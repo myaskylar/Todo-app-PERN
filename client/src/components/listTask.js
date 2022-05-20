@@ -6,7 +6,7 @@ const ListTask = () => {
 
   useEffect(() => {
     axios
-      .get("/task")
+      .get("https://pern-deploy-mya.herokuapp.com/index/task")
       .then((res) => {
         if (res.status !== 200) {
           throw new Error(res.statusText);
@@ -14,6 +14,7 @@ const ListTask = () => {
         return res.data;
       })
       .then((data) => {
+        console.log(data);
         setAllTask(data);
       })
       .catch((err) => {
