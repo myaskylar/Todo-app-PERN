@@ -14,7 +14,7 @@ const ListTask = () => {
         return res.data;
       })
       .then((data) => {
-        console.log("this is fetch---->" + data[0].name);
+        console.log("this is fetch---->" + data);
         setAllTask(data);
       })
       .catch((err) => {
@@ -25,11 +25,11 @@ const ListTask = () => {
   return (
     <div>
       <h1> Task List </h1>
-      <ul>
+      {/* <ul>
         {allTask.map((task, index)=> {
          return <li key={index}>{task.name}</li>;
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
