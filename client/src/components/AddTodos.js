@@ -8,6 +8,7 @@ const AddTodos = () => {
     event.preventDefault();
     const key = event.target.getAttribute("name");
     setNewTodo({ ...newTodo, [key]: event.target.value });
+    console.log(newTodo);
   };
 
   const handleSubmit = async (obj) => {
@@ -17,7 +18,6 @@ const AddTodos = () => {
         if (res.status !== 200) {
           throw new Error(res.statusText);
         }
-        
       })
       .catch((err) => console.error(err));
   };
@@ -26,7 +26,11 @@ const AddTodos = () => {
     <div>
       <div>
         <form
-          onSubmit={()=>{handleSubmit(newTodo)}}
+          onSubmit={(e)=>{
+            e.preventDefault();
+            handleSubmit(newTodo)
+            console.log(newTodo);
+          }}
         >
           <label>
             <input type="text" name="name" value={newTodo.name} onChange={handleChange} />
