@@ -18,6 +18,7 @@ const AddTodos = () => {
         if (res.status !== 200) {
           throw new Error(res.statusText);
         }
+         window.location = "/";
       })
       .catch((err) => console.error(err));
   };
