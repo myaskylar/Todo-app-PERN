@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import DelTodos from "./DelTodos";
+import EditTodos from "./EditTodos";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
@@ -44,6 +45,7 @@ const ListTodos = () => {
           {todos.map((todo) => (
             <tr key={todo.todo_id}>
               <td>{todo.name}</td>
+              <td><EditTodos /></td>
               <td><DelTodos id={todo.todo_id} setTodos={setTodos} todos={todos} /></td>
             </tr>
           ))}
