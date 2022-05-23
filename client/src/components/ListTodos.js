@@ -45,8 +45,12 @@ const ListTodos = () => {
           {todos.map((todo) => (
             <tr key={todo.todo_id}>
               <td>{todo.name}</td>
-              <td><EditTodos /></td>
-              <td><DelTodos id={todo.todo_id} setTodos={setTodos} todos={todos} /></td>
+              <td>
+                <EditTodos todo={todo} />
+              </td>
+              <td>
+                <DelTodos id={todo.todo_id} setTodos={setTodos} todos={todos} />
+              </td>
             </tr>
           ))}
         </tbody>

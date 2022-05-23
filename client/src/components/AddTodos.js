@@ -12,7 +12,7 @@ const AddTodos = () => {
   };
 
   const handleSubmit = async (obj) => {
-    axios
+   await axios
       .post("/todos", obj)
       .then((res) => {
         if (res.status !== 200) {
